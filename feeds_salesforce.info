@@ -1,0 +1,9 @@
+; $Id$
+name = Feeds Salesforce
+description = "Allows importing Salesforce records via Feeds module"
+core = 6.x
+version = 1.x-dev
+package = Salesforce
+dependencies[] = feeds
+dependencies[] = ctools
+dependencies[] = salesforce_api

@@ -1,0 +1,62 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * This is the file description for Feeds Salesforce module.
+ *
+ */
+
+/**
+ * Implementation of hook_ctools_plugin_api().
+ */
+function feeds_salesforce_ctools_plugin_api($owner, $api) {
+  if ($owner == 'feeds' && $api == 'plugins') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * A hook_feeds_plugins() declares available Fetcher, Parser or Processor
+ * plugins to Feeds. For an example look at feeds_feeds_plugin(). For exposing
+ * this hook hook_ctools_plugin_api() MUST be implemented, too.
+ *
+ * @see feeds_feeds_plugin()
+ */
+function feeds_salesforce_feeds_plugins() {
+  $info = array();
+  $info['SalesforceFetcher'] = array(
+    'name' => 'Salesforce Fetcher',
+    'description' => 'Fetches data from Salesforce.',
+    'help' => 'Retrieve items from Salesforce.',
+    'handler' => array(
+      'parent' => 'FeedsFetcher',
+      'class' => 'SalesforceFetcher',
+      'file' => 'SalesforceFetcher.inc',
+      'path' => drupal_get_path('module', 'feeds_salesforce'),
+    ),
+  );
+  $info['SalesforceParser'] = array(
+    'name' => 'Salesforce Parser',
+    'description' => 'Parse Salesforce data.',
+    'help' => 'Parse Salesforce data.',
+    'handler' => array(
+      'parent' => 'FeedsParser', // Being directly or indirectly an extension of FeedsParser makes a plugin a parser plugin.
+      'class' => 'SalesforceParser',
+      'file' => 'SalesforceParser.inc',
+      'path' => drupal_get_path('module', 'feeds_salesforce'),
+    ),
+  );
+  $info['SalesforceProcessor'] = array(
+    'name' => 'Salesforce Processor',
+    'description' => 'Process Salesforce data.',
+    'help' => 'Processes data received from Salesforce.',
+    'handler' => array(
+      'parent' => 'FeedsProcessor',
+      'class' => 'SalesforceProcessor',
+      'file' => 'SalesforceProcessor.inc',
+      'path' => drupal_get_path('module', 'feeds_salesforce'),
+    ),
+  );
+  return $info;
+}
