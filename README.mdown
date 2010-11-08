@@ -1,10 +1,50 @@
 
  README
- feeds_salesforce
  
  Created by Kosta Harlan on 2010-11-08.
+ DesignHammer Media Group, LLC (http://www.designhammer.com)
 
 Overview
------
+========
 
-Feeds Salesforce is a Drupal module that provides a Fetcher and Processor to the Feeds module (https://drupal.org/project/feeds). Using this module, you can query Salesforce and create Drupal records.
+Feeds Salesforce is a Drupal module that provides a Fetcher and Processor to the Feeds module. Using this module, you can query Salesforce and create Drupal records.
+
+Requirements
+============
+
+This module depends on the following modules:
+
+* Feeds - https://drupal.org/project/feeds
+* CTools - https://drupal.org/project/ctools
+* Job Scheduler - https://drupal.org/project/job_scheduler
+* Salesforce API - https://drupal.org/project/salesforce
+
+Usage
+=====
+
+### General
+
+* Enable the module as usual on admin/build/modules.
+
+### Salesforce Configuration
+
+Please follow the detailed instructions on the Salesforce module (http://drupalcode.org/viewvc/drupal/contributions/modules/salesforce/README.txt?view=co&pathrev=DRUPAL-6--2).
+
+You do not need to enable `sf_node` or `sf_user` modules, just the `salesforce_api` module.
+
+### Feeds Configuration
+
+Set up a new Feeds importer (admin/build/feeds/create), and provide a name and description for your Feed.
+
+#### Fetcher
+
+* Under "Fetcher", select "Salesforce Fetcher"
+* Click on "Settings" for Salesforce Fetcher. You can enter your SOQL query here. Do not add a trailing semi-colon to your query. 
+
+#### Parser
+
+* Under "Parser", select "Salesforce Parser". There are no settings for the parser.
+
+#### Mapping
+
+* Under Processor, select "Mapping" and assign targets. Currently on Salesforce ID and Name are available.
