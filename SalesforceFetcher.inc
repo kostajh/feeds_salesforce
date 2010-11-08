@@ -5,6 +5,8 @@
  */
 class FeedsSalesforceBatch extends FeedsImportBatch {
 	
+	protected $soql;
+	
 	/**
 	 * Constructor
 	 */
@@ -37,8 +39,8 @@ class FeedsSalesforceBatch extends FeedsImportBatch {
 		else {
       watchdog('SalesforceFetcher', t('Could not connect to Salesforce.'), array(), WATCHDOG_ERROR);
     }
-		drupal_set_message('<pre>' . print_r($items, true) . '</pre>');
-		return $items;
+
+		return $response->records;
 	}
 	
 }
@@ -54,6 +56,7 @@ class SalesforceFetcher extends FeedsFetcher {
 	public function fetch(FeedsSource $source) {
 		$source_config = $source->getConfigFor($this);
 		if ($soql = $this->config['soql_query']) {
+			drupal_set_message('<pre>' . print_r($source, true) . '</pre>');
 			return new FeedsSalesforceBatch($soql, $source->feed_nid);
 		} else {
     	return new FeedsImportBatch();

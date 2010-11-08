@@ -1,0 +1,10 @@
+
+ README
+ feeds_salesforce
+ 
+ Created by Kosta Harlan on 2010-11-08.
+
+Overview
+-----
+
+Feeds Salesforce is a Drupal module that provides a Fetcher and Processor to the Feeds module (https://drupal.org/project/feeds). Using this module, you can query Salesforce and create Drupal records.
