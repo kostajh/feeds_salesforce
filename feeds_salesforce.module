@@ -47,16 +47,13 @@ function feeds_salesforce_feeds_plugins() {
       'path' => drupal_get_path('module', 'feeds_salesforce'),
     ),
   );
-  $info['SalesforceProcessor'] = array(
-    'name' => 'Salesforce Processor',
-    'description' => 'Process Salesforce data.',
-    'help' => 'Processes data received from Salesforce.',
-    'handler' => array(
-      'parent' => 'FeedsProcessor',
-      'class' => 'SalesforceProcessor',
-      'file' => 'SalesforceProcessor.inc',
-      'path' => drupal_get_path('module', 'feeds_salesforce'),
-    ),
-  );
+
   return $info;
+}
+
+/**
+ * Implementation of hook_enable()
+ */
+function feeds_salesforce_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
 }
