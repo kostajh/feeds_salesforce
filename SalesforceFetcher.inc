@@ -40,7 +40,7 @@ class FeedsSalesforceBatch extends FeedsImportBatch {
       watchdog('SalesforceFetcher', t('Could not connect to Salesforce.'), array(), WATCHDOG_ERROR);
     }
 
-		return $response->records;
+		return $items;
 	}
 	
 }

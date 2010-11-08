@@ -34,13 +34,13 @@ class SalesforceParser extends FeedsParser {
 	 */
 	public function getMappingSources() {
 		return array(
-			'name' => array(
-				'name' => t('Name'),
-				'description' => t('Name of the Salesforce object.'),
-				),
 			'Id' => array(
 				'name' => t('Salesforce ID'),
 				'description' => t('Salesforce ID for the object.'),
+			),
+			'Name' => array(
+				'name' => t('Name'),
+				'description' => t('Name of the Salesforce object.'),
 			),
 		) + parent::getMappingSources();
 	}
