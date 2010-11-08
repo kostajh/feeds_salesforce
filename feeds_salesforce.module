@@ -57,30 +57,3 @@ function feeds_salesforce_feeds_plugins() {
 function feeds_salesforce_enable() {
   cache_clear_all('plugins:feeds:plugins', 'cache');
 }
-
-/**
- * Recurse and flatten.
- *
- * @param $i object to flatten
- * @param $loc location of $i, using database like dot syntax.
- * @param $new start a new object.
- * @return Flattened array version of object.
- */
-function feeds_salesforce_flatten_item(&$i, $loc = '', $new = false) {
-  static $item;
-
-  if ($new) {
-    $item = array();
-  }
-
-  foreach ($i as $k => $v) {
-    if (is_object($v)) {
-      feeds_salesforce_flatten_item($v, "$loc.$k");
-    }
-    else {
-      $idx = substr("$loc.$k",1);
-      $item[$idx] = $v;
-    }
-  }
-  return $item;
-}
