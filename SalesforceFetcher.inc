@@ -56,7 +56,6 @@ class SalesforceFetcher extends FeedsFetcher {
 	public function fetch(FeedsSource $source) {
 		$source_config = $source->getConfigFor($this);
 		if ($soql = $this->config['soql_query']) {
-			drupal_set_message('<pre>' . print_r($source, true) . '</pre>');
 			return new FeedsSalesforceBatch($soql, $source->feed_nid);
 		} else {
     	return new FeedsImportBatch();
