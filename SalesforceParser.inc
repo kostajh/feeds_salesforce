@@ -14,7 +14,7 @@ class SalesforceParser extends FeedsParser {
 
 		
     foreach ($result as $k => $item) {
-      $item = feeds_salesforce_flatten_item($item, '', true);
+      $item = $this->flatten_item($item, '', true);
 
       $parsed_feed->items[$k] = new stdClass();
       $parsed_feed->items[$k]->options = new stdClass();
@@ -44,4 +44,32 @@ class SalesforceParser extends FeedsParser {
 			),
 		) + parent::getMappingSources();
 	}
+	
+	/**
+	 * Recurse and flatten.
+	 *
+	 * @param $i object to flatten
+	 * @param $loc location of $i, using database like dot syntax.
+	 * @param $new start a new object.
+	 * @return Flattened array version of object.
+	 */
+	private function flatten_item(&$i, $loc = '', $new = false) {
+	  static $item;
+
+	  if ($new) {
+	    $item = array();
+	  }
+
+	  foreach ($i as $k => $v) {
+	    if (is_object($v)) {
+	      $this->flatten_item($v, "$loc.$k");
+	    }
+	    else {
+	      $idx = substr("$loc.$k",1);
+	      $item[$idx] = $v;
+	    }
+	  }
+	  return $item;
+	}
+	
 }
