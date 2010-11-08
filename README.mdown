@@ -9,6 +9,8 @@ Overview
 
 Feeds Salesforce is a Drupal module that provides a Fetcher and Processor to the Feeds module. Using this module, you can query Salesforce and create Drupal records.
 
+Why is the version 2.x? Because this module is the successor to Parser Salesforce (https://drupal.org/project/parser_salesforce), which worked with FeedAPI.
+
 Requirements
 ------------
 
