@@ -49,4 +49,10 @@ Set up a new Feeds importer (admin/build/feeds/create), and provide a name and d
 
 #### Mapping
 
-* Under Processor, select "Mapping" and assign targets. Currently on Salesforce ID and Name are available.
+Under Processor, select "Mapping" and assign targets.
+
+* Under "Source", type in the name of the column from your SOQL query, and assign it a target.
+* For example, if your SOQL query was "SELECT Id, Name, Email from Contact", under mapping you could have:
+	* Id => GUID
+	* Name => Title
+	* Email => Body

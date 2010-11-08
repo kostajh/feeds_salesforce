@@ -29,18 +29,22 @@ class SalesforceParser extends FeedsParser {
 	
 	/**
 	 * Implementation of FeedsParser::getMappingSources().
+	 * @TODO: Provide dynamic array of options depending on the SOQL query
+	 * used in SalesforceFetcher->configForm
 	 */
 	public function getMappingSources() {
-		return array(
-			'Id' => array(
-				'name' => t('Salesforce ID'),
-				'description' => t('Salesforce ID for the object.'),
-			),
-			'Name' => array(
-				'name' => t('Name'),
-				'description' => t('Name of the Salesforce object.'),
-			),
-		) + parent::getMappingSources();
+		return FALSE;
+		
+		// return array(
+		// 	'Id' => array(
+		// 		'name' => t('Salesforce ID'),
+		// 		'description' => t('Salesforce ID for the object.'),
+		// 	),
+		// 	'Name' => array(
+		// 		'name' => t('Name'),
+		// 		'description' => t('Name of the Salesforce object.'),
+		// 	),
+		// ) + parent::getMappingSources();
 	}
 	
 	/**
