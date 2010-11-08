@@ -1,16 +1,16 @@
-
- README
+README
+======
  
- Created by Kosta Harlan on 2010-11-08.
- DesignHammer Media Group, LLC (http://www.designhammer.com)
+Created by Kosta Harlan on 2010-11-08.
+DesignHammer Media Group, LLC (http://www.designhammer.com)
 
 Overview
-========
+--------
 
 Feeds Salesforce is a Drupal module that provides a Fetcher and Processor to the Feeds module. Using this module, you can query Salesforce and create Drupal records.
 
 Requirements
-============
+------------
 
 This module depends on the following modules:
 
@@ -20,7 +20,7 @@ This module depends on the following modules:
 * Salesforce API - https://drupal.org/project/salesforce
 
 Usage
-=====
+-----
 
 ### General
 
