@@ -9,9 +9,7 @@ class SalesforceParser extends FeedsParser {
 		
 		$result = $batch->getRaw();
 		
-		$batch->title = 'title';
-		$batch->description = 'description';
-
+		$batch->title = 'SOQL query';
 		
     foreach ($result as $k => $item) {
       $item = $this->flatten_item($item, '', true);
